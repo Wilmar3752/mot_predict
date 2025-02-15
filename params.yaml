@@ -5,6 +5,8 @@ concatenation:
   input_path: data/raw/motos
   output_path: data/raw
   output_filename: motos_raw.csv
+preprocessing:
+  output_file: data/raw/motos_raw_final.csv
 featurize:
   target_column: price
   data_transformed_path: data/processed/

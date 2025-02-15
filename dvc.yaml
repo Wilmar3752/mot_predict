@@ -13,11 +13,19 @@ stages:
       - data/raw/motos_raw.csv
     params:
       - concatenation
+  preprocessing:
+    cmd: python src/stages/preprocessing.py --config params.yaml
+    deps:
+      - src/stages/preprocessing.py
+    outs:
+      - data/raw/motos_raw_final.csv
+    params:
+      - preprocessing
   feature_engineering:
     cmd: python src/stages/feature_engineering.py --config params.yaml
     deps:
     - src/stages/feature_engineering.py
-    - data/raw/car_raw.csv
+    - data/raw/motos_raw_final.csv
     outs:
     - models/feature_engineering_pipeline.joblib
     - data/processed/X_test.csv

@@ -31,7 +31,7 @@ def run_model_training(config_path: Text):
                         index=True
                     )
     logger.info('Comparing All Classification Models')
-    best = compare_models(sort = 'r2')
+    best = compare_models(sort = 'r2', include=['lr'])
     logger.info('Saving All Models Experiment')
     best_tuned_model = tune_model(best, fold=5, n_iter=5)
     preprocess_pipeline.steps.append(('best_model',best_tuned_model))

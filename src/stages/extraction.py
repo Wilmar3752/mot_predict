@@ -16,7 +16,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger("extraction")
 
-session = boto3.Session(profile_name='personal')
+session = boto3.Session()
 
 s3 = session.client('s3')
 

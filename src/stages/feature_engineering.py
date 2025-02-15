@@ -24,9 +24,7 @@ def run_feature_engineering(config_path: Text):
     config = load_config(config_path)
     logger.info('Init Feature Selection!')
     
-    # Load the dataset using the selected features
-    input_path = config['concatenation']['output_path']
-    input_filename = input_path + "/" + config['concatenation']['output_filename']
+    input_filename = config['preprocessing']['output_file']
     df = _read_train_dataset(input_filename)
     X_train, X_test, y_train, y_test = _train_test_split(df, config)
 
@@ -72,7 +70,7 @@ def _train_test_split(df, config):
     return X_train, X_test, y_train, y_test
 
 def _read_train_dataset(input_filename):
-    final_vars = ['price', 'antique', 'vehicle_make', 'vehicle_line','version' ,'kilometraje']
+    final_vars = ['price', 'antique', 'vehicle_make', 'vehicle_line' ,'kilometraje']
     df = pd.read_csv(input_filename,index_col=0)
     df['year_created' ] = df['_created'].apply(lambda x: x[:4]).astype(int)
     df['antique'] = df['year_created'] - df['years']
