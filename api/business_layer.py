@@ -4,11 +4,10 @@ class RequestBody(BaseModel):
     # required for all AI models
     vehicle_model: int = 2014
     # Model specific
-    vehicle_make: str = "Kia"
-    vehicle_line: str = "Cerato"
-    version: str = "Pro 1.6 Sx"
+    vehicle_make: str = "Yamaha"
+    vehicle_line: str = "N-Max"
     kilometraje: int =  50000
-    #location_city: str = "Suba"
+    cilindraje: int = 200
     #location_state: str = "Bogotá D.C."
 
 

@@ -28,31 +28,31 @@ stages:
     outs:
     - path: data/raw/motos_raw.csv
       hash: md5
-      md5: e66243568d2dd60b8cb18b57bea3f77b
-      size: 4261506
+      md5: f2d9dcc8997db150e67ef46ca07bb3d6
+      size: 4391782
   train:
     cmd: python src/stages/train.py --config params.yaml
     deps:
     - path: data/processed/X_test.csv
       hash: md5
-      md5: 2cdfa017073b7ae201839396c9f5ee31
-      size: 2424
+      md5: 5d4e057576e3aff8180453ea7973b402
+      size: 3017
     - path: data/processed/X_test_tranformed.csv
       hash: md5
-      md5: a9f6fdfde35b0a23ac32fb81436975da
-      size: 5549
+      md5: 9a473c7c658765b851763be1056fb6d7
+      size: 7202
     - path: data/processed/X_train.csv
       hash: md5
-      md5: 70aec5ed70b7ae1e566c3d28b8ff06b0
-      size: 21538
+      md5: 82f60a82d1ef5f13ed6bdadd5a54a82e
+      size: 26263
     - path: data/processed/X_train_transformed.csv
       hash: md5
-      md5: d5f1e5384eab8dc5083db1f7c41d2e22
-      size: 49195
+      md5: 2d00ce116fa30600d01a995a28e8260e
+      size: 63998
     - path: models/feature_engineering_pipeline.joblib
       hash: md5
-      md5: 22c45d3e9e0f677a8fe17c1064b7f07c
-      size: 2119
+      md5: 148a40c55d960ed591a68004ebb1b826
+      size: 2207
     - path: src/stages/train.py
       hash: md5
       md5: 49cc1a26b81e03e5c97b35f7bec83fc8
@@ -64,19 +64,19 @@ stages:
     outs:
     - path: models/final_pipeline.joblib
       hash: md5
-      md5: d6b973446ec367a6a139ffb073d3d340
-      size: 2891
+      md5: cf58ebfcccebe9efd91b41311da09ffc
+      size: 3007
   feature_engineering:
     cmd: python src/stages/feature_engineering.py --config params.yaml
     deps:
     - path: data/raw/motos_raw_final.csv
       hash: md5
-      md5: 4a58657e649cbbc75ba25ad5f766e98c
-      size: 223354
+      md5: daa65ab91424e9501ffc1cd88360cd55
+      size: 230814
     - path: src/stages/feature_engineering.py
       hash: md5
-      md5: ac92f278a9d3ecd87725499d010a8195
-      size: 3057
+      md5: a3973da98cd0f56df26c6a096999934d
+      size: 3070
     params:
       params.yaml:
         feature_engineering:
@@ -87,35 +87,35 @@ stages:
     outs:
     - path: data/processed/X_test.csv
       hash: md5
-      md5: 2cdfa017073b7ae201839396c9f5ee31
-      size: 2424
+      md5: 5d4e057576e3aff8180453ea7973b402
+      size: 3017
     - path: data/processed/X_test_tranformed.csv
       hash: md5
-      md5: a9f6fdfde35b0a23ac32fb81436975da
-      size: 5549
+      md5: 9a473c7c658765b851763be1056fb6d7
+      size: 7202
     - path: data/processed/X_train.csv
       hash: md5
-      md5: 70aec5ed70b7ae1e566c3d28b8ff06b0
-      size: 21538
+      md5: 82f60a82d1ef5f13ed6bdadd5a54a82e
+      size: 26263
     - path: data/processed/X_train_transformed.csv
       hash: md5
-      md5: d5f1e5384eab8dc5083db1f7c41d2e22
-      size: 49195
+      md5: 2d00ce116fa30600d01a995a28e8260e
+      size: 63998
     - path: models/feature_engineering_pipeline.joblib
       hash: md5
-      md5: 22c45d3e9e0f677a8fe17c1064b7f07c
-      size: 2119
+      md5: 148a40c55d960ed591a68004ebb1b826
+      size: 2207
   evaluate:
     cmd: python src/stages/evaluate.py --config params.yaml
     deps:
     - path: data/processed/X_test.csv
       hash: md5
-      md5: 2cdfa017073b7ae201839396c9f5ee31
-      size: 2424
+      md5: 5d4e057576e3aff8180453ea7973b402
+      size: 3017
     - path: models/final_pipeline.joblib
       hash: md5
-      md5: d6b973446ec367a6a139ffb073d3d340
-      size: 2891
+      md5: cf58ebfcccebe9efd91b41311da09ffc
+      size: 3007
     - path: src/stages/evaluate.py
       hash: md5
       md5: b011553596ca667786963ade90dc9696
@@ -131,15 +131,15 @@ stages:
     outs:
     - path: experiments/metrics.json
       hash: md5
-      md5: 6e4086077cf8efb3cdb10edde8bd23d1
-      size: 142
+      md5: 365f283c21a8563275efdc1b6f490e3f
+      size: 144
   preprocessing:
     cmd: python src/stages/preprocessing.py --config params.yaml
     deps:
     - path: src/stages/preprocessing.py
       hash: md5
-      md5: 307516218cd1f96b8872733595ce349d
-      size: 4419
+      md5: fe14a5d315637da6864cb14b75f7136c
+      size: 4407
     params:
       params.yaml:
         preprocessing:
@@ -147,5 +147,5 @@ stages:
     outs:
     - path: data/raw/motos_raw_final.csv
       hash: md5
-      md5: 4a58657e649cbbc75ba25ad5f766e98c
-      size: 223354
+      md5: daa65ab91424e9501ffc1cd88360cd55
+      size: 230814

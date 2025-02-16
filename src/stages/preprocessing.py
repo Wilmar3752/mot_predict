@@ -58,10 +58,11 @@ def process_yamaha(data):
     # Aplicar reemplazos de nombres de modelos
     yamaha['vehicle_line'] = yamaha['vehicle_line'].replace(reemplazos_modelos)
     
-    # Actualizar cilindradas basadas en el modelo
+    # Actualizar cilindradas solo donde hay NA
     for modelo, cilindraje in cilindradas.items():
-        mask = yamaha['vehicle_line'] == modelo
+        mask = (yamaha['vehicle_line'] == modelo) & (yamaha['cilindraje'].isna())
         yamaha.loc[mask, 'cilindraje'] = cilindraje
+    
     return yamaha
 
 def process_general(data):
@@ -133,4 +134,3 @@ if __name__ == "__main__":
     args_parser.add_argument("--config", dest="config", required=True)
     args = args_parser.parse_args()
     final_data = main(args.config)
-    final_data.to_csv("data/raw/motos_raw.csv")
